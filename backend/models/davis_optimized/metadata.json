@@ -1,0 +1,158 @@
+{
+  "dataset": "davis",
+  "architecture": "Validation-selected ensemble of a sequence CNN and two hashed n-gram MLPs",
+  "members": [
+    {
+      "weight": 0.5,
+      "best_epoch": 97,
+      "epochs_completed": 109,
+      "kind": "cnn",
+      "input_lengths": [
+        92,
+        1000
+      ],
+      "file": "member_1.keras"
+    },
+    {
+      "weight": 0.25,
+      "best_epoch": 80,
+      "epochs_completed": 92,
+      "kind": "ngram",
+      "input_lengths": [
+        2048,
+        2048
+      ],
+      "file": "member_2.keras"
+    },
+    {
+      "weight": 0.25,
+      "best_epoch": 58,
+      "epochs_completed": 70,
+      "kind": "ngram",
+      "input_lengths": [
+        2048,
+        2048
+      ],
+      "file": "member_3.keras"
+    }
+  ],
+  "files": {
+    "member_1.keras": "789c5c528344fe4a50f41a02edef91a1b0e42e59261bcd7b4971c9059aebfdcf",
+    "member_2.keras": "5d8b5a2ea3ab822997d84beaee249e3bb21e49cd6a1430e42a5bc972520f4368",
+    "member_3.keras": "ab7aedb80ca654fcde1f89e3cdd9dee08c2f1f07bee051d4a06f1e9440d7c6bb"
+  },
+  "feature_version": "blake2b-ngram-logcounts-l2-v1",
+  "feature_sha256": "197995ae3e598f0313c6d2d42c59e1eb656a786378a7dffcefb438dea0b3089e",
+  "drug_vocab": {
+    "#": 2,
+    "(": 3,
+    ")": 4,
+    ".": 5,
+    "1": 6,
+    "2": 7,
+    "3": 8,
+    "4": 9,
+    "5": 10,
+    "6": 11,
+    "7": 12,
+    "8": 13,
+    "9": 14,
+    "=": 15,
+    "Br": 16,
+    "C": 17,
+    "Cl": 18,
+    "F": 19,
+    "I": 20,
+    "N": 21,
+    "O": 22,
+    "P": 23,
+    "S": 24
+  },
+  "protein_vocab": {
+    "A": 2,
+    "C": 3,
+    "D": 4,
+    "E": 5,
+    "F": 6,
+    "G": 7,
+    "H": 8,
+    "I": 9,
+    "K": 10,
+    "L": 11,
+    "M": 12,
+    "N": 13,
+    "P": 14,
+    "Q": 15,
+    "R": 16,
+    "S": 17,
+    "T": 18,
+    "V": 19,
+    "W": 20,
+    "X": 21,
+    "Y": 22
+  },
+  "tokenizer_pattern": "\\[[^\\]]+\\]|Br|Cl|Si|Se|Na|Ca|Li|Mg|Al|Fe|Zn|Cu|[A-Za-z]|\\d|[().=#\\-+/\\\\:@?*]",
+  "metrics": {
+    "validation": {
+      "n": 4383,
+      "mse": 0.2636939657967261,
+      "rmse": 0.5135114076597774,
+      "mae": 0.27838677492909797,
+      "concordance_index": 0.8727655800077356
+    },
+    "test": {
+      "n": 5010,
+      "mse": 0.39731470624399184,
+      "rmse": 0.6303290460100913,
+      "mae": 0.3350596057202764,
+      "concordance_index": 0.8523112190599091
+    }
+  },
+  "selection": {
+    "name": "extended_cnn_ngram_blend",
+    "criterion": "Lowest validation MSE, CI tie-break. No new test result used.",
+    "members": [
+      {
+        "weight": 0.5,
+        "best_epoch": 97,
+        "epochs_completed": 109,
+        "kind": "cnn",
+        "input_lengths": [
+          92,
+          1000
+        ],
+        "file": "member_1.keras"
+      },
+      {
+        "weight": 0.25,
+        "best_epoch": 80,
+        "epochs_completed": 92,
+        "kind": "ngram",
+        "input_lengths": [
+          2048,
+          2048
+        ],
+        "file": "member_2.keras"
+      },
+      {
+        "weight": 0.25,
+        "best_epoch": 58,
+        "epochs_completed": 70,
+        "kind": "ngram",
+        "input_lengths": [
+          2048,
+          2048
+        ],
+        "file": "member_3.keras"
+      }
+    ]
+  },
+  "benchmark_note": "Retrospective benchmark on the previously inspected historical test. This is not a fresh blind test or independent external validation.",
+  "limitations": "Pair-level dataset evaluation. Familiar drugs and targets dominate. No independently calibrated per-prediction accuracy or clinical validation. CNN input cropping is disclosed.",
+  "sources": [
+    "Supplied Davis Kd matrix, converted as pKd = 9 - log10(Kd in nM).",
+    "Training folds 2\u20135, validation fold 1, historical test fold. Exact and cropped input-pair overlaps purged.",
+    "Training pairs 17,272; validation pairs 4,383; benchmark pairs 5,010.",
+    "Base method: \u00d6zt\u00fcrk et al., DeepDTA, Bioinformatics (2018), https://doi.org/10.1093/bioinformatics/bty593"
+  ]
+}

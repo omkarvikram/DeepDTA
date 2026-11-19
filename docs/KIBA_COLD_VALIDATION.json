@@ -1,0 +1,82 @@
+{
+  "purpose": "Retrospective cold-split benchmark with three separately trained models. These are not the deployed KIBA model.",
+  "dataset": "Supplied KIBA finite pairs; same source as the deployed model, repartitioned by entity.",
+  "source_sha256": {
+    "ligands_can.txt": "a95797abaf31b17bd2471dbf3e3476f588d5a79797903cc156528f66e55c963b",
+    "proteins.txt": "2ba9dbc2959d88b0740aaf28828c4c611c2dbd1c2019547eb2ec1c3daa192604",
+    "kiba_binding_affinity_v2.txt": "0b062d3f51e80b63acda95bcc6364cacafa744d1dcd2d97293ccc878540b5732"
+  },
+  "feature_version": "blake2b-ngram-logcounts-l2-v1",
+  "seed": 20261103,
+  "protocol": "New two-branch models with the deployed model architecture; train-only label scaling; early stopping on validation; frozen test evaluation once per split.",
+  "limitations": "Not external or prospective validation. Drug/protein similarity and assay-specific biases can remain. Cold benchmark metrics do not describe the deployed pair-level model on those test pairs.",
+  "results": {
+    "cold_drug": {
+      "split_policy": "Deterministic group partition; validation and test groups excluded from training.",
+      "pairs": {
+        "train": 82513,
+        "validation": 17852,
+        "test": 17889,
+        "excluded_cross_partition": 0
+      },
+      "unseen_test_drugs": 318,
+      "unseen_test_proteins": 0,
+      "train_test_drug_overlap": 0,
+      "train_test_protein_overlap": 227,
+      "epochs": 20,
+      "best_epoch": 12,
+      "metrics": {
+        "n": 17889,
+        "rmse": 0.6517537232883645,
+        "mae": 0.4255382149846846,
+        "spearman": 0.6302660197995066,
+        "training_mean_baseline_rmse": 0.8332957263793673
+      }
+    },
+    "cold_protein": {
+      "split_policy": "Deterministic group partition; validation and test groups excluded from training.",
+      "pairs": {
+        "train": 82116,
+        "validation": 17112,
+        "test": 19026,
+        "excluded_cross_partition": 0
+      },
+      "unseen_test_drugs": 0,
+      "unseen_test_proteins": 35,
+      "train_test_drug_overlap": 2018,
+      "train_test_protein_overlap": 0,
+      "epochs": 34,
+      "best_epoch": 26,
+      "metrics": {
+        "n": 19026,
+        "rmse": 0.6392666711174577,
+        "mae": 0.4337432632984629,
+        "spearman": 0.6121335317953566,
+        "training_mean_baseline_rmse": 0.8149369255234782
+      }
+    },
+    "cold_both": {
+      "split_policy": "Deterministic group partition; validation and test groups excluded from training.",
+      "pairs": {
+        "train": 76817,
+        "validation": 995,
+        "test": 1215,
+        "excluded_cross_partition": 39227
+      },
+      "unseen_test_drugs": 194,
+      "unseen_test_proteins": 24,
+      "train_test_drug_overlap": 0,
+      "train_test_protein_overlap": 0,
+      "epochs": 12,
+      "best_epoch": 4,
+      "metrics": {
+        "n": 1215,
+        "rmse": 0.7347936029085096,
+        "mae": 0.5288436348055616,
+        "spearman": 0.41410661290765677,
+        "training_mean_baseline_rmse": 0.856941824700677
+      }
+    }
+  },
+  "training_seconds": 60.82224798202515
+}

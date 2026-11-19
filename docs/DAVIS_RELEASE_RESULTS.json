@@ -1,0 +1,76 @@
+{
+  "selection_sha256": "d80d7bf99aa298c31cebcec8fb60bc8a20f839e01e27d0ceaf4306e64db1a1ca",
+  "selected": {
+    "name": "extended_cnn_ngram_blend",
+    "members": [
+      {
+        "folder": "research/davis_extension_20261111/davis/runs/higher_lr_seed42",
+        "weight": 0.5,
+        "sha256": "789c5c528344fe4a50f41a02edef91a1b0e42e59261bcd7b4971c9059aebfdcf",
+        "config_sha256": "8dfb38fb5cbe696735c2f649b5c0efd877ac9a91e0f67e4ce68a3de06c8f6179",
+        "best_epoch": 97,
+        "epochs_completed": 109,
+        "kind": "cnn",
+        "input_lengths": [
+          92,
+          1000
+        ]
+      },
+      {
+        "folder": "research/model_tuning_20261111/davis/runs/ngram_lower_lr_seed42",
+        "weight": 0.25,
+        "sha256": "5d8b5a2ea3ab822997d84beaee249e3bb21e49cd6a1430e42a5bc972520f4368",
+        "config_sha256": "b8e6ec5d3b0961fe9d47e686f36462340e2fb4451e8e9552083f2e92caf3cbf0",
+        "best_epoch": 80,
+        "epochs_completed": 92,
+        "kind": "ngram",
+        "input_lengths": [
+          2048,
+          2048
+        ]
+      },
+      {
+        "folder": "research/model_tuning_20261111/davis/runs/ngram_lower_lr_seed123",
+        "weight": 0.25,
+        "sha256": "ab7aedb80ca654fcde1f89e3cdd9dee08c2f1f07bee051d4a06f1e9440d7c6bb",
+        "config_sha256": "2ded2d275698b876be14747f2634c04235ad00bbe4c8595455112acbcce896b3",
+        "best_epoch": 58,
+        "epochs_completed": 70,
+        "kind": "ngram",
+        "input_lengths": [
+          2048,
+          2048
+        ]
+      }
+    ],
+    "validation": {
+      "n": 4383,
+      "mse": 0.2636939657967261,
+      "rmse": 0.5135114076597774,
+      "mae": 0.27838677492909797,
+      "concordance_index": 0.8727655800077356
+    }
+  },
+  "test": {
+    "n": 5010,
+    "mse": 0.39731470624399184,
+    "rmse": 0.6303290460100913,
+    "mae": 0.3350596057202764,
+    "concordance_index": 0.8523112190599091
+  },
+  "previous_test": {
+    "n": 5010,
+    "mse": 0.3987177591577795,
+    "rmse": 0.6314410179563722,
+    "mae": 0.3386758337477724,
+    "concordance_index": 0.851871670939881
+  },
+  "baseline_test": {
+    "n": 5010,
+    "mse": 0.44118124185539,
+    "rmse": 0.6642147558247935,
+    "mae": 0.3864832318471577,
+    "concordance_index": 0.8388994879034672
+  },
+  "note": "Retrospective benchmark on the previously inspected historical test. This is not a fresh blind test or independent external validation."
+}

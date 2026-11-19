@@ -1,0 +1,16 @@
+﻿.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+dist/
+build/
+
+# Local database files
+backend/storage/*.db
+backend/storage/*.db-shm
+backend/storage/*.db-wal

@@ -1,0 +1,1 @@
+Research source reference. The portable launcher does not retrain models. Reproduction requires the supplied Davis/KIBA archives and study manifests. See docs/Original_Model_Study.html and DAVIS_RELEASE_NOTES.md.

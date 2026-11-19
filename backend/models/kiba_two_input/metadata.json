@@ -1,0 +1,97 @@
+{
+  "dataset": "kiba",
+  "architecture": "Two-branch MLP on hashed character n-gram features; not the original DeepDTA CNN.",
+  "feature_version": "blake2b-ngram-logcounts-l2-v1",
+  "feature_dimension": 2048,
+  "seed": 20261103,
+  "epochs": 58,
+  "best_epoch": 50,
+  "training_seconds": 54.32650279998779,
+  "sha256": "534f66bcfc19445754f425f7f104e8c3908451d97ccbcf9b8187fdfcc375675b",
+  "metrics": {
+    "validation": {
+      "n": 19709,
+      "mse": 0.18424532061167362,
+      "rmse": 0.4292380698536345,
+      "mae": 0.25431271810026934,
+      "spearman": 0.8488609068823331,
+      "concordance_index": 0.8627768919276338,
+      "training_mean_baseline_mse": 0.6934727854433876
+    },
+    "test": {
+      "n": 19709,
+      "mse": 0.18600436733764208,
+      "rmse": 0.431282236288074,
+      "mae": 0.2522615198736062,
+      "spearman": 0.8433981141177515,
+      "concordance_index": 0.8609370632698902,
+      "training_mean_baseline_mse": 0.6796637684920742
+    }
+  },
+  "training_rows": 78836,
+  "validation_rows": 19709,
+  "test_rows": 19709,
+  "split_manifest": {
+    "inputs": [
+      "drug_smiles",
+      "protein_sequence"
+    ],
+    "label": "kiba_score",
+    "metadata_only": [
+      "drug_id",
+      "protein_id",
+      "pair_index",
+      "source_fold"
+    ],
+    "representation": "Supplied canonical SMILES, unchanged. Full protein sequence, unchanged.",
+    "score_scale": "Original supplied KIBA score; no conversion to Kd, pKd or nM.",
+    "ordering": "JSON insertion order; pair_index indexes row-major finite affinity entries.",
+    "split_policy": "Original training fold 1 is validation; folds 2\u20135 are train; supplied test fold is untouched.",
+    "missing_values": "NaN pairs excluded; finite zero scores retained.",
+    "length_policy": "No truncation, filtering or padding. Select and document model length handling before training.",
+    "evaluation_limit": "Pair-level split; compounds and proteins can overlap across partitions. Not a cold-drug or cold-protein benchmark.",
+    "source_sha256": {
+      "ligands_can.txt": "a95797abaf31b17bd2471dbf3e3476f588d5a79797903cc156528f66e55c963b",
+      "proteins.txt": "2ba9dbc2959d88b0740aaf28828c4c611c2dbd1c2019547eb2ec1c3daa192604",
+      "kiba_binding_affinity_v2.txt": "0b062d3f51e80b63acda95bcc6364cacafa744d1dcd2d97293ccc878540b5732",
+      "train_fold_setting1.txt": "da74eeeb2c3e7d52a2fd6daac0dc105bba097c222337230eec69d9fd7e1c301e",
+      "test_fold_setting1.txt": "92801eec2caddf950235c6c6a46d999d2eeeaa6d35cbeffd68c72a5cf54b208d"
+    },
+    "splits": {
+      "train": {
+        "rows": 78836,
+        "sha256": "014adbfc56b3e1527dd8240b1931210820e934f3d3eb0577f0b68c4ec376d458",
+        "smiles_over_100_characters": 686,
+        "proteins_over_1000_residues": 15977
+      },
+      "validation": {
+        "rows": 19709,
+        "sha256": "d78c66a2f97f2e28a1d3582d85219d64fd3bd2c8de6a8e27edf404c34122b072",
+        "smiles_over_100_characters": 169,
+        "proteins_over_1000_residues": 4040
+      },
+      "test": {
+        "rows": 19709,
+        "sha256": "e59b0b5611dc24b11484726a332283f363e2a7c5b29027302391e6d06e64a0f4",
+        "smiles_over_100_characters": 127,
+        "proteins_over_1000_residues": 4086
+      }
+    },
+    "observed_pairs": 118254,
+    "max_smiles_characters": 590,
+    "max_protein_residues": 4128
+  },
+  "python": "3.11.18 (main, Oct 26 2026, 13:58:42) [Clang 23.1.3 ]",
+  "tensorflow": "2.20.0",
+  "numpy": "2.4.6",
+  "preprocessing": "Exact SMILES characters (1\u20134 grams) and full amino-acid sequence (1\u20133 grams); deterministic BLAKE2b hash; log counts, L2 normalisation, log length. No truncation or similarity inputs.",
+  "limitations": "Pair-level held-out test: drugs/proteins may overlap training. No cold-drug/protein validation, experimental validation, or calibrated uncertainty. Hashed features lose global position and can collide. Predictions depend on SMILES representation; use the supplied canonical representation when available. KIBA scores are not Kd, pKd, nM or confidence percentages.",
+  "inference_limits": {
+    "smiles_characters": 2000,
+    "protein_residues": 10000
+  },
+  "trained_max_lengths": {
+    "smiles": 590,
+    "protein": 4128
+  }
+}

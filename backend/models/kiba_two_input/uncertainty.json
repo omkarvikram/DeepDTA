@@ -1,0 +1,75 @@
+{
+  "format": "kiba-split-conformal-absolute-residual-v1",
+  "model_sha256": "534f66bcfc19445754f425f7f104e8c3908451d97ccbcf9b8187fdfcc375675b",
+  "feature_version": "blake2b-ngram-logcounts-l2-v1",
+  "test_split_sha256": "e59b0b5611dc24b11484726a332283f363e2a7c5b29027302391e6d06e64a0f4",
+  "test_predictions_sha256": "08ec5726626a2f49d5ae35ab0c803bb53bdb00d2ed2617bf5f492020ce72c05c",
+  "assignment": "Exact-pair SHA-256 first 32 bits parity; duplicate pairs stay together.",
+  "exclusions": {
+    "seen_pair": 149,
+    "unseen_component": 0,
+    "out_of_training_range": 0
+  },
+  "calibration_pairs": 9706,
+  "audit_pairs": 9854,
+  "levels": {
+    "50": {
+      "half_width": 0.11753654479980469,
+      "audit_coverage": 0.4882281307083418
+    },
+    "80": {
+      "half_width": 0.3720264434814453,
+      "audit_coverage": 0.7835396793180435
+    },
+    "90": {
+      "half_width": 0.6529026031494141,
+      "audit_coverage": 0.8956768824842704
+    },
+    "95": {
+      "half_width": 0.9585609436035156,
+      "audit_coverage": 0.9530140044651918
+    }
+  },
+  "accuracy_tolerance_kiba": 0.5,
+  "score_bin_edges": [
+    11.2256441116333,
+    11.423641204833984,
+    11.739212989807129,
+    12.039342880249023
+  ],
+  "score_bins": [
+    {
+      "calibration_pairs": 1941,
+      "estimated_within_tolerance": 0.9191138588356518,
+      "audit_pairs": 1940,
+      "audit_within_tolerance": 0.9175257731958762
+    },
+    {
+      "calibration_pairs": 1941,
+      "estimated_within_tolerance": 0.9402369912416281,
+      "audit_pairs": 1997,
+      "audit_within_tolerance": 0.9258888332498748
+    },
+    {
+      "calibration_pairs": 1941,
+      "estimated_within_tolerance": 0.8918083462132921,
+      "audit_pairs": 1993,
+      "audit_within_tolerance": 0.8876066231811339
+    },
+    {
+      "calibration_pairs": 1941,
+      "estimated_within_tolerance": 0.8907779495105616,
+      "audit_pairs": 1952,
+      "audit_within_tolerance": 0.8647540983606558
+    },
+    {
+      "calibration_pairs": 1942,
+      "estimated_within_tolerance": 0.6385169927909372,
+      "audit_pairs": 1972,
+      "audit_within_tolerance": 0.6308316430020284
+    }
+  ],
+  "scope": "Pair-level KIBA test fold; exact drug and protein inputs were separately present in model fitting, but the exact pair was absent from fitting and model selection and input lengths are within the training range.",
+  "limitations": "Marginal coverage for similar exchangeable pairs, not certainty for one pair, binding probability, physical affinity, external validation, or performance for unseen drugs/proteins. This reuses the supplied test fold for post-hoc calibration and audit; the audit is not independent external data.",
+  "method_reference": "https://arxiv.org/abs/2107.07511"
+}
