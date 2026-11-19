@@ -1,5 +1,8 @@
 
-const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+const API_BASE = (
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://deep-dta-b1bg.vercel.app'
+).replace(/\/$/, '');
 
 export async function api<T = any>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(`${API_BASE}/api${path}`, {
